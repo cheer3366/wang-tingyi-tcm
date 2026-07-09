@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://cheer3366.github.io/wang-tingyi-tcm/sitemap.xml
