@@ -513,6 +513,52 @@ h3 {
   line-height: 1.85;
 }
 
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 14px;
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+.service-grid a {
+  min-height: 174px;
+  padding: 20px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--paper);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.service-grid a:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+}
+
+.service-grid span {
+  display: inline-flex;
+  margin-bottom: 18px;
+  color: var(--rose-dark);
+  font-size: 0.82rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+}
+
+.service-grid strong {
+  display: block;
+  color: var(--ink);
+  font-size: 1.05rem;
+  line-height: 1.45;
+}
+
+.service-grid small {
+  display: block;
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 0.88rem;
+  line-height: 1.65;
+}
+
 .schedule-layout {
   display: grid;
   grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.65fr);
@@ -711,9 +757,31 @@ h3 {
   padding: 24px;
 }
 
+.article-card small {
+  display: block;
+  margin-top: 14px;
+  color: var(--muted);
+  font-size: 0.95rem;
+  font-weight: 800;
+  line-height: 1.7;
+}
+
 .article-card:hover {
   transform: translateY(-2px);
   box-shadow: var(--shadow);
+}
+
+.article-more {
+  display: inline-flex;
+  width: fit-content;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 24px;
+  border: 1px solid #d9c7c3;
+  border-radius: 999px;
+  background: #f8f2ef;
+  color: var(--primary-dark);
+  font-weight: 900;
 }
 
 .article-list h3 {
@@ -753,6 +821,14 @@ h3 {
   font-weight: 800;
 }
 
+.article-date {
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: 0.98rem;
+  font-weight: 800;
+  line-height: 1.7;
+}
+
 .article-content {
   display: grid;
   gap: 30px;
@@ -781,6 +857,31 @@ h3 {
   gap: 10px;
   margin: 0;
   padding-left: 1.2em;
+}
+
+.article-index-shell {
+  max-width: 1120px;
+}
+
+.article-index-intro {
+  margin-bottom: 26px;
+  padding: clamp(22px, 3vw, 34px);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--paper);
+}
+
+.article-index-intro p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 1.08rem;
+  line-height: 2;
+}
+
+.article-index-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
 }
 
 .article-note {
@@ -862,6 +963,8 @@ h3 {
   }
 
   .care-grid,
+  .service-grid,
+  .article-index-grid,
   .faq-grid,
   .situation-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -914,6 +1017,8 @@ h3 {
   .booking-actions,
   .article-list,
   .care-grid,
+  .service-grid,
+  .article-index-grid,
   .faq-grid {
     grid-template-columns: 1fr;
   }
