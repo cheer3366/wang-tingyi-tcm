@@ -1,0 +1,77 @@
+media:
+  input: assets/uploads
+  output: /wang-tingyi-tcm/assets/uploads
+  rename: safe
+  categories: [image]
+
+content:
+  - name: articles
+    label: 衛教文章
+    type: collection
+    path: articles
+    exclude: [index.html]
+    filename:
+      template: "{slug}.md"
+      field: create
+    view:
+      fields: [title, category, date_modified, published]
+      primary: title
+      sort: [date_modified, title]
+      default:
+        sort: date_modified
+        order: desc
+    fields:
+      - name: layout
+        type: string
+        hidden: true
+        default: article
+      - name: title
+        label: 文章標題
+        type: string
+        required: true
+      - name: description
+        label: Google 搜尋摘要
+        type: text
+        required: true
+        description: 建議填寫 80～150 字，說明文章能幫讀者了解什麼。
+      - name: category
+        label: 文章分類
+        type: string
+        required: true
+        description: 例如「女性代謝」或「健檢紅字・代謝健康」。
+      - name: date
+        label: 發布日期
+        type: date
+        required: true
+        options:
+          format: yyyy-MM-dd
+      - name: date_modified
+        label: 更新日期
+        type: date
+        required: true
+        options:
+          format: yyyy-MM-dd
+      - name: author
+        label: 作者
+        type: string
+        default: 王婷乙醫師
+        required: true
+      - name: cover
+        label: 封面圖片
+        type: image
+        default: /assets/article.jpg
+      - name: permalink
+        label: 文章網址
+        type: string
+        hidden: true
+      - name: published
+        label: 公開發布
+        type: boolean
+        default: true
+      - name: body
+        label: 文章內容
+        type: rich-text
+        required: true
+        options:
+          format: html
+          switcher: true

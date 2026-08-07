@@ -1,0 +1,8 @@
+title: 王婷乙醫師
+url: "https://cheer3366.github.io"
+baseurl: "/wang-tingyi-tcm"
+timezone: Asia/Taipei
+encoding: utf-8
+markdown: kramdown
+exclude:
+  - README.md
