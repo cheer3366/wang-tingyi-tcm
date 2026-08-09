@@ -1,3 +1,6 @@
+---
+layout: null
+---
 <!doctype html>
 <html lang="zh-Hant">
   <head>
@@ -362,23 +365,14 @@
             <img src="assets/article.jpg" alt="王婷乙醫師近照" />
           </figure>
           <div class="article-list">
-            <a class="article-card" href="articles/science-park-weight-gain.html">
-              <span>王婷乙醫師</span>
-              <h3>竹科上班後體重直線上升，是代謝變差還是壓力太大？</h3>
+            {% assign health_articles = site.pages | where: "layout", "article" | where: "published", true | sort: "date" | reverse %}
+            {% for article in health_articles limit: 4 %}
+            <a class="article-card" href="{{ site.baseurl }}{{ article.url }}">
+              <span>{{ article.author | default: "王婷乙醫師" }}</span>
+              <h3>{{ article.title }}</h3>
             </a>
-            <a class="article-card" href="articles/health-check-numbers.html">
-              <span>王婷乙醫師</span>
-              <h3>健檢紅字出現後，體重、腰圍和血脂該怎麼一起看？</h3>
-            </a>
-            <a class="article-card" href="articles/engineer-weight-loss.html">
-              <span>王婷乙醫師</span>
-              <h3>中科工程師久坐、外食、睡不好，中醫減重會先看什麼？</h3>
-            </a>
-            <a class="article-card" href="articles/female-metabolism.html">
-              <span>王婷乙醫師</span>
-              <h3>女性代謝管理：月經、水腫、痘痘和體重為什麼常常一起變？</h3>
-            </a>
-            <a class="article-more" href="articles/">查看全部衛教文章</a>
+            {% endfor %}
+            <a class="article-more" href="{{ site.baseurl }}/articles/">查看全部衛教文章</a>
           </div>
         </div>
       </section>

@@ -1,91 +1,11 @@
+---
+layout: null
+---
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://cheer3366.github.io/wang-tingyi-tcm/</loc>
-    <lastmod>2026-07-18</lastmod>
-  </url>
-  <url>
-    <loc>https://cheer3366.github.io/wang-tingyi-tcm/articles/</loc>
-    <lastmod>2026-07-18</lastmod>
-  </url>
-  <url>
-    <loc>https://cheer3366.github.io/wang-tingyi-tcm/articles/science-park-weight-gain.html</loc>
-    <lastmod>2026-07-18</lastmod>
-  </url>
-  <url>
-    <loc>https://cheer3366.github.io/wang-tingyi-tcm/articles/engineer-weight-loss.html</loc>
-    <lastmod>2026-07-18</lastmod>
-  </url>
-  <url>
-    <loc>https://cheer3366.github.io/wang-tingyi-tcm/articles/health-check-numbers.html</loc>
-    <lastmod>2026-07-18</lastmod>
-  </url>
-  <url>
-    <loc>https://cheer3366.github.io/wang-tingyi-tcm/articles/fatty-liver-weight.html</loc>
-    <lastmod>2026-07-18</lastmod>
-  </url>
-  <url>
-    <loc>https://cheer3366.github.io/wang-tingyi-tcm/articles/high-blood-sugar-metabolism.html</loc>
-    <lastmod>2026-07-18</lastmod>
-  </url>
-  <url>
-    <loc>https://cheer3366.github.io/wang-tingyi-tcm/articles/high-cholesterol-waist.html</loc>
-    <lastmod>2026-07-18</lastmod>
-  </url>
-  <url>
-    <loc>https://cheer3366.github.io/wang-tingyi-tcm/articles/cleanroom-less-water.html</loc>
-    <lastmod>2026-07-18</lastmod>
-  </url>
-  <url>
-    <loc>https://cheer3366.github.io/wang-tingyi-tcm/articles/shift-work-sleep-metabolism.html</loc>
-    <lastmod>2026-07-18</lastmod>
-  </url>
-  <url>
-    <loc>https://cheer3366.github.io/wang-tingyi-tcm/articles/lunch-coffee-dessert-weight.html</loc>
-    <lastmod>2026-07-18</lastmod>
-  </url>
-  <url>
-    <loc>https://cheer3366.github.io/wang-tingyi-tcm/articles/female-metabolism.html</loc>
-    <lastmod>2026-07-18</lastmod>
-  </url>
-  <url>
-    <loc>https://cheer3366.github.io/wang-tingyi-tcm/services/catgut-embedding.html</loc>
-    <lastmod>2026-07-18</lastmod>
-  </url>
-  <url>
-    <loc>https://cheer3366.github.io/wang-tingyi-tcm/services/digestive-sleep.html</loc>
-    <lastmod>2026-07-18</lastmod>
-  </url>
-  <url>
-    <loc>https://cheer3366.github.io/wang-tingyi-tcm/services/female-metabolism.html</loc>
-    <lastmod>2026-07-18</lastmod>
-  </url>
-  <url>
-    <loc>https://cheer3366.github.io/wang-tingyi-tcm/services/gynecology.html</loc>
-    <lastmod>2026-07-18</lastmod>
-  </url>
-  <url>
-    <loc>https://cheer3366.github.io/wang-tingyi-tcm/services/health-check-metabolism.html</loc>
-    <lastmod>2026-07-18</lastmod>
-  </url>
-  <url>
-    <loc>https://cheer3366.github.io/wang-tingyi-tcm/services/menopause.html</loc>
-    <lastmod>2026-07-18</lastmod>
-  </url>
-  <url>
-    <loc>https://cheer3366.github.io/wang-tingyi-tcm/services/pcos.html</loc>
-    <lastmod>2026-07-18</lastmod>
-  </url>
-  <url>
-    <loc>https://cheer3366.github.io/wang-tingyi-tcm/services/science-park-metabolism.html</loc>
-    <lastmod>2026-07-18</lastmod>
-  </url>
-  <url>
-    <loc>https://cheer3366.github.io/wang-tingyi-tcm/services/skin.html</loc>
-    <lastmod>2026-07-18</lastmod>
-  </url>
-  <url>
-    <loc>https://cheer3366.github.io/wang-tingyi-tcm/services/weight-loss.html</loc>
-    <lastmod>2026-07-18</lastmod>
-  </url>
+  <url><loc>https://cheer3366.github.io/wang-tingyi-tcm/</loc><lastmod>{{ site.time | date: "%Y-%m-%d" }}</lastmod></url>
+  <url><loc>https://cheer3366.github.io/wang-tingyi-tcm/articles/</loc><lastmod>{{ site.time | date: "%Y-%m-%d" }}</lastmod></url>
+  {% assign health_articles = site.pages | where: "layout", "article" | where: "published", true %}
+  {% for article in health_articles %}<url><loc>{{ site.url }}{{ site.baseurl }}{{ article.url }}</loc><lastmod>{{ article.date_modified | date: "%Y-%m-%d" }}</lastmod></url>{% endfor %}
+  {% for service in site.pages %}{% if service.url contains '/services/' and service.url contains '.html' %}<url><loc>{{ site.url }}{{ site.baseurl }}{{ service.url }}</loc><lastmod>{{ site.time | date: "%Y-%m-%d" }}</lastmod></url>{% endif %}{% endfor %}
 </urlset>

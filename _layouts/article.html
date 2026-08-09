@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>王婷乙醫師｜{{ page.title }}</title>
+    <meta name="description" content="{{ page.description | escape }}" />
+    <link rel="canonical" href="{{ site.url }}{{ site.baseurl }}{{ page.url }}" />
+    <meta property="og:title" content="王婷乙醫師｜{{ page.title | escape }}" />
+    <meta property="og:description" content="{{ page.description | escape }}" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="{{ site.url }}{{ site.baseurl }}{{ page.url }}" />
+    <meta property="og:image" content="{% if page.cover contains '://' %}{{ page.cover }}{% elsif page.cover contains site.baseurl %}{{ site.url }}{{ page.cover }}{% else %}{{ site.url }}{{ site.baseurl }}{{ page.cover }}{% endif %}" />
+    <script type="application/ld+json">
+      {"@context":"https://schema.org","@type":"Article","headline":{{ page.title | jsonify }},"description":{{ page.description | jsonify }},"image":"{% if page.cover contains '://' %}{{ page.cover }}{% elsif page.cover contains site.baseurl %}{{ site.url }}{{ page.cover }}{% else %}{{ site.url }}{{ site.baseurl }}{{ page.cover }}{% endif %}","datePublished":"{{ page.date | date: '%Y-%m-%d' }}","dateModified":"{{ page.date_modified | date: '%Y-%m-%d' }}","author":{"@type":"Person","name":{{ page.author | jsonify }},"url":"{{ site.url }}{{ site.baseurl }}/"},"publisher":{"@type":"Person","name":{{ page.author | jsonify }}},"mainEntityOfPage":"{{ site.url }}{{ site.baseurl }}{{ page.url }}"}
+    </script>
+    <link rel="stylesheet" href="{{ site.baseurl }}/styles.css" />
+  </head>
+  <body class="article-page">
+    <main class="article-shell">
+      <a class="article-back" href="{{ site.baseurl }}/index.html#articles">回衛教文章</a>
+      <header class="article-hero">
+        <p class="eyebrow">Health Notes</p>
+        <h1>{{ page.title }}</h1>
+        <p class="article-meta">{{ page.author }}｜{{ page.category }}</p>
+        <p class="article-date">更新日期：<time datetime="{{ page.date_modified | date: '%Y-%m-%d' }}">{{ page.date_modified | date: '%Y.%m.%d' }}</time></p>
+      </header>
+      <article class="article-content">
+        {{ content }}
+      </article>
+    </main>
+  </body>
+</html>
