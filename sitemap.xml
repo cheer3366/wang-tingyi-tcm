@@ -7,5 +7,14 @@ layout: null
   <url><loc>https://cheer3366.github.io/wang-tingyi-tcm/articles/</loc><lastmod>{{ site.time | date: "%Y-%m-%d" }}</lastmod></url>
   {% assign health_articles = site.pages | where: "layout", "article" | where: "published", true %}
   {% for article in health_articles %}<url><loc>{{ site.url }}{{ site.baseurl }}{{ article.url }}</loc><lastmod>{{ article.date_modified | date: "%Y-%m-%d" }}</lastmod></url>{% endfor %}
-  {% for service in site.pages %}{% if service.url contains '/services/' and service.url contains '.html' %}<url><loc>{{ site.url }}{{ site.baseurl }}{{ service.url }}</loc><lastmod>{{ site.time | date: "%Y-%m-%d" }}</lastmod></url>{% endif %}{% endfor %}
+  <url><loc>https://cheer3366.github.io/wang-tingyi-tcm/services/catgut-embedding.html</loc><lastmod>{{ site.time | date: "%Y-%m-%d" }}</lastmod></url>
+  <url><loc>https://cheer3366.github.io/wang-tingyi-tcm/services/digestive-sleep.html</loc><lastmod>{{ site.time | date: "%Y-%m-%d" }}</lastmod></url>
+  <url><loc>https://cheer3366.github.io/wang-tingyi-tcm/services/female-metabolism.html</loc><lastmod>{{ site.time | date: "%Y-%m-%d" }}</lastmod></url>
+  <url><loc>https://cheer3366.github.io/wang-tingyi-tcm/services/gynecology.html</loc><lastmod>{{ site.time | date: "%Y-%m-%d" }}</lastmod></url>
+  <url><loc>https://cheer3366.github.io/wang-tingyi-tcm/services/health-check-metabolism.html</loc><lastmod>{{ site.time | date: "%Y-%m-%d" }}</lastmod></url>
+  <url><loc>https://cheer3366.github.io/wang-tingyi-tcm/services/menopause.html</loc><lastmod>{{ site.time | date: "%Y-%m-%d" }}</lastmod></url>
+  <url><loc>https://cheer3366.github.io/wang-tingyi-tcm/services/pcos.html</loc><lastmod>{{ site.time | date: "%Y-%m-%d" }}</lastmod></url>
+  <url><loc>https://cheer3366.github.io/wang-tingyi-tcm/services/science-park-metabolism.html</loc><lastmod>{{ site.time | date: "%Y-%m-%d" }}</lastmod></url>
+  <url><loc>https://cheer3366.github.io/wang-tingyi-tcm/services/skin.html</loc><lastmod>{{ site.time | date: "%Y-%m-%d" }}</lastmod></url>
+  <url><loc>https://cheer3366.github.io/wang-tingyi-tcm/services/weight-loss.html</loc><lastmod>{{ site.time | date: "%Y-%m-%d" }}</lastmod></url>
 </urlset>
