@@ -362,17 +362,13 @@ layout: null
         </div>
         <div class="article-layout">
           <figure class="article-image">
-            <img src="assets/article.jpg" alt="王婷乙醫師近照" />
+            <img src="assets/uploads/file.png" alt="蛋白質槓桿假說文章封面" />
           </figure>
           <div class="article-list">
-            {% assign health_articles = site.pages | where: "layout", "article" | where: "published", true | sort: "date" | reverse %}
-            {% for article in health_articles limit: 4 %}
-            <a class="article-card" href="{{ site.baseurl }}{{ article.url }}">
-              <span>{{ article.author | default: "王婷乙醫師" }}</span>
-              <h3>{{ article.title }}</h3>
+            <a class="article-card" href="{{ site.baseurl }}/articles/protein-satiety.html">
+              <span>王婷乙醫師</span>
+              <h3>為什麼肚子餓會一直想吃麵包、麵條和甜點？揭秘「蛋白質槓桿假說」</h3>
             </a>
-            {% endfor %}
-            <a class="article-more" href="{{ site.baseurl }}/articles/">查看全部衛教文章</a>
           </div>
         </div>
       </section>
