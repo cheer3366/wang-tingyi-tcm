@@ -25,6 +25,14 @@
         <p class="article-meta">{{ page.author }}｜{{ page.category }}</p>
         <p class="article-date">更新日期：<time datetime="{{ page.date_modified | date: '%Y-%m-%d' }}">{{ page.date_modified | date: '%Y.%m.%d' }}</time></p>
       </header>
+      {% if page.cover %}
+      <figure class="article-cover">
+        <img
+          src="{% if page.cover contains '://' %}{{ page.cover }}{% elsif page.cover contains site.baseurl %}{{ page.cover }}{% else %}{{ site.baseurl }}{{ page.cover }}{% endif %}"
+          alt="{{ page.title | escape }}文章封面"
+        />
+      </figure>
+      {% endif %}
       <article class="article-content">
         {{ content }}
       </article>
