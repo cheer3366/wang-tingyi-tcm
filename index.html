@@ -360,17 +360,24 @@ layout: null
           <h2>衛教文章與專欄題目</h2>
           <p class="single-line-note">由王婷乙醫師撰寫，從健檢數字、體重變化、女性代謝、睡眠壓力與日常飲食切入，整理成好理解、能對照生活的衛教內容。</p>
         </div>
+        {% assign health_articles = site.pages | where: "layout", "article" | where: "published", true | sort: "date" | reverse %}
+        {% assign featured_article = health_articles | first %}
+        {% if featured_article %}
         <div class="article-layout">
           <figure class="article-image">
-            <img src="assets/uploads/file.png" alt="蛋白質槓桿假說文章封面" />
+            <img
+              src="{% if featured_article.cover contains '://' %}{{ featured_article.cover }}{% elsif featured_article.cover contains site.baseurl %}{{ featured_article.cover }}{% else %}{{ site.baseurl }}{{ featured_article.cover }}{% endif %}"
+              alt="{{ featured_article.title | escape }}文章封面"
+            />
           </figure>
           <div class="article-list">
-            <a class="article-card" href="{{ site.baseurl }}/articles/protein-satiety.html">
-              <span>王婷乙醫師</span>
-              <h3>為什麼肚子餓會一直想吃麵包、麵條和甜點？揭秘「蛋白質槓桿假說」</h3>
+            <a class="article-card" href="{{ site.baseurl }}{{ featured_article.url }}">
+              <span>{{ featured_article.author | default: "王婷乙醫師" }}</span>
+              <h3>{{ featured_article.title }}</h3>
             </a>
           </div>
         </div>
+        {% endif %}
       </section>
 
       <section id="schedule" class="schedule section-wrap">
