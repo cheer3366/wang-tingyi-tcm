@@ -999,6 +999,66 @@ h3 {
   padding-left: 1.2em;
 }
 
+.article-content table {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  margin: 28px 0;
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: var(--paper);
+  -webkit-overflow-scrolling: touch;
+}
+
+.article-content table tbody {
+  display: table;
+  width: 100%;
+  min-width: 720px;
+  border-collapse: collapse;
+}
+
+.article-content table td,
+.article-content table th {
+  padding: 20px 22px;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  color: var(--text);
+  text-align: left;
+  vertical-align: middle;
+}
+
+.article-content table tr:last-child td,
+.article-content table tr:last-child th {
+  border-bottom: 0;
+}
+
+.article-content table td:last-child,
+.article-content table th:last-child {
+  border-right: 0;
+}
+
+.article-content table tr:first-child td,
+.article-content table thead th {
+  background: #f8f5f3;
+  font-weight: 900;
+}
+
+.article-content table td:first-child,
+.article-content table th:first-child {
+  width: 18%;
+  min-width: 170px;
+  font-weight: 900;
+}
+
+.article-content table p {
+  margin: 0;
+  color: inherit;
+  line-height: 1.75;
+}
+
 .article-index-shell {
   max-width: 1120px;
 }
