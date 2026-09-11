@@ -361,8 +361,8 @@ layout: null
           <p class="single-line-note">由王婷乙醫師撰寫，從健檢數字、體重變化、女性代謝、睡眠壓力與日常飲食切入，整理成好理解、能對照生活的衛教內容。</p>
         </div>
         {% assign health_articles = site.pages | where: "layout", "article" | where: "published", true | sort: "date" | reverse %}
-        {% assign featured_article = health_articles | first %}
-        {% if featured_article %}
+        {% assign latest_articles = health_articles | slice: 0, 5 %}
+        {% if latest_articles.size > 0 %}
         <div class="article-layout">
           <figure class="article-image">
             <img
@@ -370,21 +370,41 @@ layout: null
               alt="王婷乙醫師形象照"
             />
           </figure>
-          <div class="article-list">
-            <a class="article-card article-card--featured" href="{{ site.baseurl }}{{ featured_article.url }}">
-              {% if featured_article.cover %}
-              <img
-                class="article-card-thumb"
-                src="{% if featured_article.cover contains '://' %}{{ featured_article.cover }}{% elsif featured_article.cover contains site.baseurl %}{{ featured_article.cover }}{% else %}{{ site.baseurl }}{{ featured_article.cover }}{% endif %}"
-                alt="{{ featured_article.title | escape }}縮圖"
-              />
-              {% endif %}
-              <div class="article-card-content">
-                <span>{{ featured_article.author | default: "王婷乙醫師" }}</span>
-                <time datetime="{{ featured_article.date_modified | date: '%Y-%m-%d' }}">更新日期：{{ featured_article.date_modified | date: "%Y.%m.%d" }}</time>
-                <h3>{{ featured_article.title }}</h3>
+          <div class="article-carousel" data-article-carousel aria-roledescription="輪播" aria-label="最新衛教文章">
+            <div class="article-carousel-viewport">
+              <div class="article-carousel-track" data-carousel-track>
+                {% for article in latest_articles %}
+                <article class="article-carousel-slide" data-carousel-slide aria-label="第 {{ forloop.index }} 篇，共 {{ latest_articles.size }} 篇">
+                  <a class="article-card article-card--featured" href="{{ site.baseurl }}{{ article.url }}">
+                    {% if article.cover %}
+                    <img
+                      class="article-card-thumb"
+                      src="{% if article.cover contains '://' %}{{ article.cover }}{% elsif article.cover contains site.baseurl %}{{ article.cover }}{% else %}{{ site.baseurl }}{{ article.cover }}{% endif %}"
+                      alt="{{ article.title | escape }}縮圖"
+                    />
+                    {% endif %}
+                    <div class="article-card-content">
+                      <span>{{ article.author | default: "王婷乙醫師" }}｜{{ article.category }}</span>
+                      <time datetime="{{ article.date_modified | date: '%Y-%m-%d' }}">更新日期：{{ article.date_modified | date: "%Y.%m.%d" }}</time>
+                      <h3>{{ article.title }}</h3>
+                    </div>
+                  </a>
+                </article>
+                {% endfor %}
               </div>
-            </a>
+            </div>
+            <div class="article-carousel-controls">
+              <div class="article-carousel-buttons">
+                <button type="button" data-carousel-prev aria-label="上一篇文章">‹</button>
+                <button type="button" data-carousel-next aria-label="下一篇文章">›</button>
+              </div>
+              <div class="article-carousel-dots" data-carousel-dots aria-label="選擇文章">
+                {% for article in latest_articles %}
+                <button type="button" data-carousel-dot="{{ forloop.index0 }}" aria-label="顯示第 {{ forloop.index }} 篇文章"{% if forloop.first %} aria-current="true"{% endif %}></button>
+                {% endfor %}
+              </div>
+              <a class="article-more" href="{{ site.baseurl }}/articles/">查看全部文章（{{ health_articles.size }}）</a>
+            </div>
           </div>
         </div>
         {% endif %}
@@ -547,5 +567,47 @@ layout: null
         <a href="https://sysint.csh.org.tw/Register/CSHRegister.aspx" target="_blank" rel="noreferrer">中山附醫掛號</a>
       </div>
     </footer>
+    <script>
+      (() => {
+        const carousel = document.querySelector("[data-article-carousel]");
+        if (!carousel) return;
+
+        const track = carousel.querySelector("[data-carousel-track]");
+        const slides = [...carousel.querySelectorAll("[data-carousel-slide]")];
+        const dots = [...carousel.querySelectorAll("[data-carousel-dot]")];
+        const previous = carousel.querySelector("[data-carousel-prev]");
+        const next = carousel.querySelector("[data-carousel-next]");
+        const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        let activeIndex = 0;
+        let timer;
+
+        const show = (index, behavior = "smooth") => {
+          activeIndex = (index + slides.length) % slides.length;
+          track.style.transform = `translateX(-${activeIndex * 100}%)`;
+          track.style.transitionBehavior = behavior;
+          slides.forEach((slide, slideIndex) => slide.setAttribute("aria-hidden", slideIndex === activeIndex ? "false" : "true"));
+          dots.forEach((dot, dotIndex) => {
+            if (dotIndex === activeIndex) dot.setAttribute("aria-current", "true");
+            else dot.removeAttribute("aria-current");
+          });
+        };
+
+        const stop = () => window.clearInterval(timer);
+        const start = () => {
+          stop();
+          if (!reduceMotion && slides.length > 1) timer = window.setInterval(() => show(activeIndex + 1), 5500);
+        };
+
+        previous?.addEventListener("click", () => { show(activeIndex - 1); start(); });
+        next?.addEventListener("click", () => { show(activeIndex + 1); start(); });
+        dots.forEach((dot, index) => dot.addEventListener("click", () => { show(index); start(); }));
+        carousel.addEventListener("mouseenter", stop);
+        carousel.addEventListener("mouseleave", start);
+        carousel.addEventListener("focusin", stop);
+        carousel.addEventListener("focusout", start);
+        show(0, "auto");
+        start();
+      })();
+    </script>
   </body>
 </html>

@@ -776,6 +776,82 @@ h3 {
   gap: 16px;
 }
 
+.article-carousel {
+  min-width: 0;
+}
+
+.article-carousel-viewport {
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.article-carousel-track {
+  display: flex;
+  transition: transform 480ms ease;
+}
+
+.article-carousel-slide {
+  flex: 0 0 100%;
+  min-width: 0;
+}
+
+.article-carousel-slide[aria-hidden="true"] a {
+  visibility: hidden;
+}
+
+.article-carousel-controls {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 16px;
+}
+
+.article-carousel-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.article-carousel-buttons button {
+  width: 44px;
+  height: 44px;
+  border: 1px solid #d9c7c3;
+  border-radius: 50%;
+  background: var(--paper);
+  color: var(--primary-dark);
+  cursor: pointer;
+  font: inherit;
+  font-size: 1.75rem;
+  line-height: 1;
+}
+
+.article-carousel-buttons button:hover,
+.article-carousel-buttons button:focus-visible {
+  border-color: var(--primary);
+  background: #f8f2ef;
+}
+
+.article-carousel-dots {
+  display: flex;
+  gap: 8px;
+  margin-right: auto;
+}
+
+.article-carousel-dots button {
+  width: 9px;
+  height: 9px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: #d8c7c3;
+  cursor: pointer;
+}
+
+.article-carousel-dots button[aria-current="true"] {
+  width: 24px;
+  border-radius: 999px;
+  background: var(--primary);
+}
+
 .article-card {
   display: block;
   min-height: 210px;
@@ -948,6 +1024,15 @@ h3 {
   gap: 18px;
 }
 
+.article-index-grid .article-card {
+  padding: 0;
+  overflow: hidden;
+}
+
+.article-index-grid .article-card-thumb {
+  height: 220px;
+}
+
 .article-note {
   border-left: 4px solid #d8c7c3;
   padding-left: 18px;
@@ -1102,6 +1187,14 @@ h3 {
   }
 
   .btn {
+    width: 100%;
+  }
+
+  .article-carousel-controls {
+    flex-wrap: wrap;
+  }
+
+  .article-carousel-controls .article-more {
     width: 100%;
   }
 

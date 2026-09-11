@@ -31,9 +31,18 @@ layout: null
         {% assign health_articles = site.pages | where: "layout", "article" | where: "published", true | sort: "date" | reverse %}
         {% for article in health_articles %}
         <a class="article-card" href="{{ site.baseurl }}{{ article.url }}">
+          {% if article.cover %}
+          <img
+            class="article-card-thumb"
+            src="{% if article.cover contains '://' %}{{ article.cover }}{% elsif article.cover contains site.baseurl %}{{ article.cover }}{% else %}{{ site.baseurl }}{{ article.cover }}{% endif %}"
+            alt="{{ article.title | escape }}縮圖"
+          />
+          {% endif %}
+          <div class="article-card-content">
           <span>{{ article.author | default: "王婷乙醫師" }}｜{{ article.category }}</span>
           <h3>{{ article.title }}</h3>
           <small>更新日期：<time datetime="{{ article.date_modified | date: "%Y-%m-%d" }}">{{ article.date_modified | date: "%Y.%m.%d" }}</time></small>
+          </div>
         </a>
         {% endfor %}
       </section>
