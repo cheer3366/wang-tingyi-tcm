@@ -79,7 +79,7 @@ layout: null
         ]
       }
     </script>
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles.css?v=20261030" />
   </head>
   <body>
     <header class="site-header">
@@ -91,10 +91,10 @@ layout: null
         </span>
       </a>
       <nav class="site-nav" aria-label="主要導覽">
+        <a href="#articles" class="nav-journal">衛教更新<span aria-hidden="true"> •</span></a>
         <a href="#about">關於</a>
         <a href="#care">診療方向</a>
         <a href="#column">專欄</a>
-        <a href="#articles">衛教</a>
         <a href="#schedule">門診</a>
       </nav>
       <a class="header-action" href="https://www.kyoto.com.tw/contact/reserve" target="_blank" rel="noreferrer">
@@ -108,6 +108,7 @@ layout: null
           <p class="eyebrow">新竹京都堂院長・中山附醫中西整合醫療科</p>
           <h1><span>王婷乙</span><small>醫師</small></h1>
           <p class="lead">懂你身體的語言，也懂你想變好的心情。</p>
+          <a class="hero-journal-link" href="#articles">HEALTH JOURNAL <span>閱讀最新衛教筆記 ↗</span></a>
           <div class="keyword-row" aria-label="網站關鍵字">
             <span>女性代謝管理</span>
             <span>中醫減重</span>
@@ -132,6 +133,42 @@ layout: null
         <figure class="hero-media">
           <img src="assets/hero-new.jpg" alt="王婷乙醫師形象照" />
         </figure>
+      </section>
+
+      <section id="articles" class="articles section-band" aria-labelledby="articles-title">
+        {% assign health_articles = site.pages | where: "layout", "article" | where: "published", true | sort: "date" | reverse %}
+        {% assign latest_articles = health_articles | slice: 0, 5 %}
+        <div class="notes-heading">
+          <div>
+            <p class="eyebrow">Health Journal · 衛教更新</p>
+            <h2 id="articles-title">把健康，讀進日常。</h2>
+            <p>王婷乙醫師的衛教筆記，陪你從生活裡的小訊號，慢慢理解身體。</p>
+          </div>
+          <a class="notes-all" href="{{ site.baseurl }}/articles/">瀏覽全部文章 <span aria-hidden="true">↗</span></a>
+        </div>
+        {% if latest_articles.size > 0 %}
+        <div class="journal-grid">
+          {% for article in latest_articles %}
+          <a class="journal-card{% if forloop.first %} journal-card--lead{% endif %}" href="{{ site.baseurl }}{{ article.url }}">
+            <div class="journal-visual">
+              {% if article.cover %}
+              <img src="{% if article.cover contains '://' %}{{ article.cover }}{% elsif article.cover contains site.baseurl %}{{ article.cover }}{% else %}{{ site.baseurl }}{{ article.cover }}{% endif %}" alt="" loading="lazy" />
+              {% else %}
+              <span class="journal-placeholder" aria-hidden="true">日常<br />養好自己</span>
+              {% endif %}
+              {% if forloop.first %}<span class="journal-badge">最新更新</span>{% endif %}
+            </div>
+            <div class="journal-copy">
+              <div class="journal-meta"><span>{{ article.category | default: "健康筆記" }}</span><time datetime="{{ article.date_modified | default: article.date | date: '%Y-%m-%d' }}">{{ article.date_modified | default: article.date | date: "%Y.%m.%d" }}</time></div>
+              <h3>{{ article.title | escape }}</h3>
+              <span class="journal-read">閱讀文章 <span aria-hidden="true">↗</span></span>
+            </div>
+          </a>
+          {% endfor %}
+        </div>
+        {% else %}
+        <p>更多衛教內容，歡迎前往<a class="notes-all" href="{{ site.baseurl }}/articles/">衛教文章專區 ↗</a>。</p>
+        {% endif %}
       </section>
 
       <section id="about" class="about section-wrap">
@@ -352,62 +389,6 @@ layout: null
             </div>
           </div>
         </div>
-      </section>
-
-      <section id="articles" class="articles section-band">
-        <div class="section-heading">
-          <p class="eyebrow">Health Notes</p>
-          <h2>衛教文章與專欄題目</h2>
-          <p class="single-line-note">由王婷乙醫師撰寫，從健檢數字、體重變化、女性代謝、睡眠壓力與日常飲食切入，整理成好理解、能對照生活的衛教內容。</p>
-        </div>
-        {% assign health_articles = site.pages | where: "layout", "article" | where: "published", true | sort: "date" | reverse %}
-        {% assign latest_articles = health_articles | slice: 0, 5 %}
-        {% if latest_articles.size > 0 %}
-        <div class="article-layout">
-          <figure class="article-image">
-            <img
-              src="assets/article-main.jpg"
-              alt="王婷乙醫師形象照"
-            />
-          </figure>
-          <div class="article-carousel" data-article-carousel aria-roledescription="輪播" aria-label="最新衛教文章">
-            <div class="article-carousel-viewport">
-              <div class="article-carousel-track" data-carousel-track>
-                {% for article in latest_articles %}
-                <article class="article-carousel-slide" data-carousel-slide aria-label="第 {{ forloop.index }} 篇，共 {{ latest_articles.size }} 篇">
-                  <a class="article-card article-card--featured" href="{{ site.baseurl }}{{ article.url }}">
-                    {% if article.cover %}
-                    <img
-                      class="article-card-thumb"
-                      src="{% if article.cover contains '://' %}{{ article.cover }}{% elsif article.cover contains site.baseurl %}{{ article.cover }}{% else %}{{ site.baseurl }}{{ article.cover }}{% endif %}"
-                      alt="{{ article.title | escape }}縮圖"
-                    />
-                    {% endif %}
-                    <div class="article-card-content">
-                      <span>{{ article.author | default: "王婷乙醫師" }}｜{{ article.category }}</span>
-                      <time datetime="{{ article.date_modified | date: '%Y-%m-%d' }}">更新日期：{{ article.date_modified | date: "%Y.%m.%d" }}</time>
-                      <h3>{{ article.title }}</h3>
-                    </div>
-                  </a>
-                </article>
-                {% endfor %}
-              </div>
-            </div>
-            <div class="article-carousel-controls">
-              <div class="article-carousel-buttons">
-                <button type="button" data-carousel-prev aria-label="上一篇文章">‹</button>
-                <button type="button" data-carousel-next aria-label="下一篇文章">›</button>
-              </div>
-              <div class="article-carousel-dots" data-carousel-dots aria-label="選擇文章">
-                {% for article in latest_articles %}
-                <button type="button" data-carousel-dot="{{ forloop.index0 }}" aria-label="顯示第 {{ forloop.index }} 篇文章"{% if forloop.first %} aria-current="true"{% endif %}></button>
-                {% endfor %}
-              </div>
-              <a class="article-more" href="{{ site.baseurl }}/articles/">查看全部文章（{{ health_articles.size }}）</a>
-            </div>
-          </div>
-        </div>
-        {% endif %}
       </section>
 
       <section id="schedule" class="schedule section-wrap">
@@ -631,3 +612,4 @@ layout: null
     </script>
   </body>
 </html>
+
