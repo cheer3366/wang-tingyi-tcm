@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>王婷乙醫師｜{{ page.title }}</title>
+    <meta name="description" content="{{ page.description | escape }}" />
+    <link rel="canonical" href="{{ site.url }}{{ site.baseurl }}{{ page.url }}" />
+    <meta property="og:title" content="王婷乙醫師｜{{ page.title | escape }}" />
+    <meta property="og:description" content="{{ page.description | escape }}" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="{{ site.url }}{{ site.baseurl }}{{ page.url }}" />
+    <meta property="og:image" content="{% if page.cover contains '://' %}{{ page.cover }}{% elsif page.cover contains site.baseurl %}{{ site.url }}{{ page.cover }}{% else %}{{ site.url }}{{ site.baseurl }}{{ page.cover }}{% endif %}" />
+    <script type="application/ld+json">
+      {"@context":"https://schema.org","@type":"Article","headline":{{ page.title | jsonify }},"description":{{ page.description | jsonify }},"image":"{% if page.cover contains '://' %}{{ page.cover }}{% elsif page.cover contains site.baseurl %}{{ site.url }}{{ page.cover }}{% else %}{{ site.url }}{{ site.baseurl }}{{ page.cover }}{% endif %}","datePublished":"{{ page.date | date: '%Y-%m-%d' }}","dateModified":"{{ page.date_modified | date: '%Y-%m-%d' }}","author":{"@type":"Person","name":{{ page.author | jsonify }},"url":"{{ site.url }}{{ site.baseurl }}/"},"publisher":{"@type":"Person","name":{{ page.author | jsonify }}},"mainEntityOfPage":"{{ site.url }}{{ site.baseurl }}{{ page.url }}"}
+    </script>
+    <link rel="stylesheet" href="{{ site.baseurl }}/styles.css" />
+  {% if page.url == '/articles/postpartum-1.html' or page.url == '/articles/postpartum.html' %}<style>
+/* Postpartum editorial reading design */
+body.postpartum-editorial {background:#f6f3ed;color:#34453e;font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;}
+.postpartum-editorial .article-shell{max-width:1060px;padding:32px 28px 72px;}
+.postpartum-editorial .article-back{font-size:14px;font-weight:500;color:#52685d;margin-bottom:36px;min-height:44px;align-items:center;}
+.postpartum-editorial .article-back::before{content:"←";margin-right:10px;}
+.postpartum-editorial .article-hero{position:relative;border-top:1px solid #cbd4c8;padding-top:30px;margin-bottom:30px;}
+.postpartum-editorial .eyebrow{color:#80574b;letter-spacing:.17em;font-size:12px;margin-bottom:18px;}
+.postpartum-editorial .article-hero h1{display:block;color:#284b3d;font-family:"Noto Serif TC","Songti TC",serif;font-weight:600;font-size:clamp(30px,4.2vw,48px);line-height:1.5;letter-spacing:.025em;max-width:880px;margin-bottom:24px;text-wrap:pretty;}
+.postpartum-editorial .article-meta{display:inline-block;color:#425b4f;font-size:14px;font-weight:500;margin:0 22px 8px 0;}
+.postpartum-editorial .article-date{display:inline-block;font-size:13px;font-weight:400;color:#667066;margin:0;}
+.postpartum-editorial .article-cover{background:#eee5d7;border-radius:18px;margin-bottom:36px;border:1px solid #e6dfd3;}
+.postpartum-editorial .article-cover img{width:100%;max-height:540px;object-fit:contain;}
+.postpartum-editorial .reading-layout{display:grid;grid-template-columns:190px minmax(0,1fr);gap:40px;align-items:start;}
+.postpartum-editorial .reading-nav{position:sticky;top:28px;padding-top:20px;border-top:2px solid #456652;font-size:14px;}
+.postpartum-editorial .reading-nav p{font-size:12px;letter-spacing:.12em;color:#80574b;margin-bottom:14px;}
+.postpartum-editorial .reading-nav a{display:block;padding:12px 0;border-bottom:1px solid #dedfd4;line-height:1.7;color:#4b6054;}
+.postpartum-editorial a:hover{color:#8a5143;}
+.postpartum-editorial a:focus-visible{outline:3px solid #8a5143;outline-offset:5px;border-radius:3px;}
+.postpartum-editorial .article-content{display:block;min-width:0;background:#fffdf9;border:1px solid #e7e3d8;border-radius:16px;padding:clamp(24px,4vw,44px);}
+.postpartum-editorial .article-content p,.postpartum-editorial .article-content li{font-size:17px;line-height:2.05;color:#46534c;letter-spacing:.035em;}
+.postpartum-editorial .article-content>p:first-child{font-size:18px;color:#355344;border-left:3px solid #8b9c79;padding:4px 0 4px 22px;margin-bottom:40px;}
+.postpartum-editorial .article-content h2{font-size:23px;line-height:1.65;color:#284b3d;margin:44px 0 22px;padding-top:24px;border-top:1px solid #dce2d5;scroll-margin-top:28px;}
+.postpartum-editorial .article-content strong{color:#36553f;font-weight:700;}
+.postpartum-editorial .article-content ul{display:block;list-style:none;padding:0;margin:14px 0;}
+.postpartum-editorial .article-content li{padding:18px 22px;background:#edf2e8;border-radius:10px;}
+.postpartum-editorial .article-content li p{margin:0;}
+.postpartum-editorial .article-content li strong{display:block;margin-bottom:4px;}
+.postpartum-editorial .article-content ul:nth-of-type(4) li{background:#f6eae3;}
+.postpartum-editorial .reading-footer{display:flex;justify-content:space-between;gap:20px;align-items:center;border-top:1px solid #cbd4c8;padding-top:25px;margin-top:42px;font-size:14px;color:#52685d;}
+.postpartum-editorial .reading-footer a{padding:12px 20px;border:1px solid #bccaba;border-radius:99px;}
+@media(max-width:720px){.postpartum-editorial .article-shell{padding:20px 20px 44px;}.postpartum-editorial .article-back{margin-bottom:20px;}.postpartum-editorial .article-hero{padding-top:22px;}.postpartum-editorial .article-hero h1{font-size:30px;line-height:1.55;}.postpartum-editorial .reading-layout{grid-template-columns:1fr;gap:24px;}.postpartum-editorial .reading-nav{position:static;display:grid;grid-template-columns:1fr 1fr;gap:0 16px;padding-top:14px;}.postpartum-editorial .reading-nav p{grid-column:1/-1;margin-bottom:2px;}.postpartum-editorial .reading-nav a{font-size:13px;min-height:48px;}.postpartum-editorial .article-cover{margin-bottom:25px;}.postpartum-editorial .article-content{padding:24px 20px;}.postpartum-editorial .article-content h2{font-size:21px;}.postpartum-editorial .article-content p,.postpartum-editorial .article-content li{font-size:16px;}.postpartum-editorial .article-content li{padding:16px;}.postpartum-editorial .reading-footer{align-items:flex-start;flex-direction:column;}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto;}}
+@media print{.postpartum-editorial .reading-nav,.postpartum-editorial .article-back,.postpartum-editorial .reading-footer{display:none;}.postpartum-editorial .reading-layout{display:block;}.postpartum-editorial .article-content{border:0;padding:0;}.postpartum-editorial .article-cover img{max-height:300px;}}
+</style>{% endif %}
+  </head>
+  <body class="article-page {% if page.url == '/articles/postpartum-1.html' or page.url == '/articles/postpartum.html' %} postpartum-editorial{% endif %}">
+    <main class="article-shell">
+      <a class="article-back" href="{{ site.baseurl }}/index.html#articles">回衛教文章</a>
+      <header class="article-hero">
+        <p class="eyebrow">{% if page.url == '/articles/postpartum-1.html' or page.url == '/articles/postpartum.html' %}產後營養手札 · POSTPARTUM CARE{% else %}Health Notes{% endif %}</p>
+        <h1>{{ page.title }}</h1>
+        <p class="article-meta">{{ page.author }}｜{{ page.category }}</p>
+        <p class="article-date">更新日期：<time datetime="{{ page.date_modified | date: '%Y-%m-%d' }}">{{ page.date_modified | date: '%Y.%m.%d' }}</time></p>
+      </header>
+      {% if page.cover %}
+      <figure class="article-cover">
+        <img
+          src="{% if page.cover contains '://' %}{{ page.cover }}{% elsif page.cover contains site.baseurl %}{{ page.cover }}{% else %}{{ site.baseurl }}{{ page.cover }}{% endif %}"
+          alt="{{ page.title | escape }}文章封面"
+        />
+      </figure>
+      {% endif %}
+{% if page.url == '/articles/postpartum-1.html' or page.url == '/articles/postpartum.html' %}<div class="reading-layout"><nav class="reading-nav" aria-label="文章目錄"><p>本篇閱讀指南</p>{% if page.url == '/articles/postpartum.html' %}<a href="#satiety">01 ／ 飽足感與血糖</a><a href="#pace">02 ／ 產後減重節奏</a><a href="#appetite">03 ／ 荷爾蒙與食慾</a><a href="#choose-oil">04 ／ 日常油品選擇</a><a href="#takeaway">05 ／ 本篇重點回顧</a>{% else %}<a href="#for-mom">01 ／ 媽媽的情緒照護</a><a href="#for-baby">02 ／ 寶寶的發育營養</a><a href="#oil-guide">03 ／ 好油選購指南</a><a href="#meal-guide">04 ／ 日常備餐建議</a>{% endif %}</nav>{% endif %}
+      <article class="article-content">
+        {% if page.url == '/articles/postpartum.html' %}{{ content | replace: '<h3>1.', '<h2 id="satiety">01 ／' | replace: '<h3>2.', '<h2 id="pace">02 ／' | replace: '<h3>3.', '<h2 id="appetite">03 ／' | replace: '<h3>4.', '<h2 id="choose-oil">04 ／' | replace: '<h3>結語：', '<h2 id="takeaway">05 ／' | replace: '</h3>', '</h2>' }}{% elsif page.url == '/articles/postpartum-1.html' %}{{ content | replace: '<h3>1.', '<h2 id="for-mom">01 ／' | replace: '<h3>2.', '<h2 id="for-baby">02 ／' | replace: '<h3>3.', '<h2 id="oil-guide">03 ／' | replace: '<h3>4.', '<h2 id="meal-guide">04 ／' | replace: '</h3>', '</h2>' }}{% else %}{{ content }}{% endif %}
+      </article>
+{% if page.url == '/articles/postpartum-1.html' or page.url == '/articles/postpartum.html' %}</div><footer class="reading-footer"><span>王婷乙醫師 · 陪妳把日常，照顧得更好</span><a href="{{ site.baseurl }}/index.html#articles">探索更多衛教文章 →</a></footer>{% endif %}
+    </main>
+  </body>
+</html>
+
