@@ -1567,3 +1567,23 @@ section[id] { scroll-margin-top: 132px; }
   .hero .keyword-row { gap: 8px; margin: 0 0 20px; }
   .hero .keyword-row span { font-size: .75rem; padding: 2px 10px; }
 }
+
+/* Simplified hero: name, two-line promise, care topics, introduction. */
+.hero-copy { display: flex; flex-direction: column; align-items: flex-start; }
+.hero .eyebrow { max-width: 34em; margin-bottom: 22px; line-height: 1.85; }
+.hero h1 { margin-bottom: 24px; }
+.hero .lead { display: grid; gap: 3px; max-width: 100%; margin-bottom: 26px; font-size: clamp(1.2rem, 1.6vw, 1.5rem); font-weight: 500; line-height: 1.65; letter-spacing: .045em; }
+.hero .lead span { display: block; }
+.hero .keyword-row { margin: 0 0 26px; gap: 9px; padding-bottom: 25px; border-bottom: 1px solid #cfc3bd; width: 100%; max-width: 32rem; }
+.hero .keyword-row span { font-size: .8125rem; font-weight: 500; padding: 3px 12px; background: rgba(255,253,251,.35); }
+.hero .intro { max-width: 32rem; font-size: .9375rem; line-height: 2; margin: 0; text-wrap: pretty; }
+.hero .hero-actions { margin-top: 28px; gap: 10px; }
+@media (max-width:760px) {
+  .hero .eyebrow { margin-bottom: 16px; }
+  .hero h1 { margin-bottom: 20px; }
+  .hero .lead { font-size: 1.1875rem; gap: 2px; margin-bottom: 22px; }
+  .hero .keyword-row { padding-bottom: 20px; margin-bottom: 20px; gap: 8px; }
+  .hero .keyword-row span { font-size: .75rem; padding: 2px 10px; }
+  .hero .intro { display: block; font-size: .875rem; line-height: 1.95; }
+  .hero .hero-actions { margin-top: 24px; }
+}
