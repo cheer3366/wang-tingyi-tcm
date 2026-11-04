@@ -15,7 +15,7 @@
       {"@context":"https://schema.org","@type":"Article","headline":{{ page.title | jsonify }},"description":{{ page.description | jsonify }},"image":"{% if page.cover contains '://' %}{{ page.cover }}{% elsif page.cover contains site.baseurl %}{{ site.url }}{{ page.cover }}{% else %}{{ site.url }}{{ site.baseurl }}{{ page.cover }}{% endif %}","datePublished":"{{ page.date | date: '%Y-%m-%d' }}","dateModified":"{{ page.date_modified | date: '%Y-%m-%d' }}","author":{"@type":"Person","name":{{ page.author | jsonify }},"url":"{{ site.url }}{{ site.baseurl }}/"},"publisher":{"@type":"Person","name":{{ page.author | jsonify }}},"mainEntityOfPage":"{{ site.url }}{{ site.baseurl }}{{ page.url }}"}
     </script>
     <link rel="stylesheet" href="{{ site.baseurl }}/styles.css" />
-  {% if page.url contains 'postpartum-1' %}<style>
+  {% if page.url == '/articles/postpartum-1.html' or page.url == '/articles/postpartum.html' %}<style>
 /* Postpartum editorial reading design */
 body.postpartum-editorial {background:#f6f3ed;color:#34453e;font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;}
 .postpartum-editorial .article-shell{max-width:1060px;padding:32px 28px 72px;}
@@ -49,13 +49,21 @@ body.postpartum-editorial {background:#f6f3ed;color:#34453e;font-family:"Noto Sa
 @media(max-width:720px){.postpartum-editorial .article-shell{padding:20px 20px 44px;}.postpartum-editorial .article-back{margin-bottom:20px;}.postpartum-editorial .article-hero{padding-top:22px;}.postpartum-editorial .article-hero h1{font-size:30px;line-height:1.55;}.postpartum-editorial .reading-layout{grid-template-columns:1fr;gap:24px;}.postpartum-editorial .reading-nav{position:static;display:grid;grid-template-columns:1fr 1fr;gap:0 16px;padding-top:14px;}.postpartum-editorial .reading-nav p{grid-column:1/-1;margin-bottom:2px;}.postpartum-editorial .reading-nav a{font-size:13px;min-height:48px;}.postpartum-editorial .article-cover{margin-bottom:25px;}.postpartum-editorial .article-content{padding:24px 20px;}.postpartum-editorial .article-content h2{font-size:21px;}.postpartum-editorial .article-content p,.postpartum-editorial .article-content li{font-size:16px;}.postpartum-editorial .article-content li{padding:16px;}.postpartum-editorial .reading-footer{align-items:flex-start;flex-direction:column;}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto;}}
 @media print{.postpartum-editorial .reading-nav,.postpartum-editorial .article-back,.postpartum-editorial .reading-footer{display:none;}.postpartum-editorial .reading-layout{display:block;}.postpartum-editorial .article-content{border:0;padding:0;}.postpartum-editorial .article-cover img{max-height:300px;}}
+
+/* Focused refinements for the postpartum weight article */
+.postpartum-weight .article-hero{border-top:3px solid #587259;}
+.postpartum-weight .article-content>p:nth-of-type(2){padding:22px 24px;background:#f5eae2;border-radius:12px;color:#604a40;margin:0 0 38px;}
+.postpartum-weight .article-content h2{border-top:0;border-left:3px solid #b7c6a5;background:#eef2e8;padding:16px 18px;border-radius:0 10px 10px 0;}
+.postpartum-weight .article-content ul:nth-of-type(n+4) li{background:#f5eae2;}
+.postpartum-weight .article-content p:last-child{padding:24px;border-radius:12px;background:#edf2e8;margin:26px 0 0;}
+@media(max-width:720px){.postpartum-weight .article-content>p:nth-of-type(2),.postpartum-weight .article-content p:last-child{padding:18px;}.postpartum-weight .article-content h2{padding:14px;}}
 </style>{% endif %}
   </head>
-  <body class="article-page {% if page.url contains 'postpartum-1' %} postpartum-editorial{% endif %}">
+  <body class="article-page {% if page.url == '/articles/postpartum-1.html' or page.url == '/articles/postpartum.html' %} postpartum-editorial{% endif %}{% if page.url == '/articles/postpartum.html' %} postpartum-weight{% endif %}">
     <main class="article-shell">
       <a class="article-back" href="{{ site.baseurl }}/index.html#articles">回衛教文章</a>
       <header class="article-hero">
-        <p class="eyebrow">{% if page.url contains 'postpartum-1' %}產後營養手札 · POSTPARTUM CARE{% else %}Health Notes{% endif %}</p>
+        <p class="eyebrow">{% if page.url == '/articles/postpartum-1.html' or page.url == '/articles/postpartum.html' %}產後營養手札 · POSTPARTUM CARE{% else %}Health Notes{% endif %}</p>
         <h1>{{ page.title }}</h1>
         <p class="article-meta">{{ page.author }}｜{{ page.category }}</p>
         <p class="article-date">更新日期：<time datetime="{{ page.date_modified | date: '%Y-%m-%d' }}">{{ page.date_modified | date: '%Y.%m.%d' }}</time></p>
@@ -68,11 +76,11 @@ body.postpartum-editorial {background:#f6f3ed;color:#34453e;font-family:"Noto Sa
         />
       </figure>
       {% endif %}
-{% if page.url contains 'postpartum-1' %}<div class="reading-layout"><nav class="reading-nav" aria-label="文章目錄"><p>本篇閱讀指南</p><a href="#for-mom">01 ／ 媽媽的情緒照護</a><a href="#for-baby">02 ／ 寶寶的發育營養</a><a href="#oil-guide">03 ／ 好油選購指南</a><a href="#meal-guide">04 ／ 日常備餐建議</a></nav>{% endif %}
+{% if page.url == '/articles/postpartum-1.html' or page.url == '/articles/postpartum.html' %}<div class="reading-layout"><nav class="reading-nav" aria-label="文章目錄"><p>本篇閱讀指南</p>{% if page.url == '/articles/postpartum.html' %}<a href="#satiety">01 ／ 飽足感與血糖</a><a href="#pace">02 ／ 產後減重節奏</a><a href="#appetite">03 ／ 荷爾蒙與食慾</a><a href="#choose-oil">04 ／ 日常油品選擇</a><a href="#takeaway">05 ／ 本篇重點回顧</a>{% else %}<a href="#for-mom">01 ／ 媽媽的情緒照護</a><a href="#for-baby">02 ／ 寶寶的發育營養</a><a href="#oil-guide">03 ／ 好油選購指南</a><a href="#meal-guide">04 ／ 日常備餐建議</a>{% endif %}</nav>{% endif %}
       <article class="article-content">
-        {% if page.url contains 'postpartum-1' %}{{ content | replace: '<h3>1.', '<h2 id="for-mom">01 ／' | replace: '<h3>2.', '<h2 id="for-baby">02 ／' | replace: '<h3>3.', '<h2 id="oil-guide">03 ／' | replace: '<h3>4.', '<h2 id="meal-guide">04 ／' | replace: '</h3>', '</h2>' }}{% else %}{{ content }}{% endif %}
+        {% if page.url == '/articles/postpartum.html' %}{{ content | replace: '<h3>1.', '<h2 id="satiety">01 ／' | replace: '<h3>2.', '<h2 id="pace">02 ／' | replace: '<h3>3.', '<h2 id="appetite">03 ／' | replace: '<h3>4.', '<h2 id="choose-oil">04 ／' | replace: '<h3>結語：', '<h2 id="takeaway">05 ／' | replace: '</h3>', '</h2>' }}{% elsif page.url == '/articles/postpartum-1.html' %}{{ content | replace: '<h3>1.', '<h2 id="for-mom">01 ／' | replace: '<h3>2.', '<h2 id="for-baby">02 ／' | replace: '<h3>3.', '<h2 id="oil-guide">03 ／' | replace: '<h3>4.', '<h2 id="meal-guide">04 ／' | replace: '</h3>', '</h2>' }}{% else %}{{ content }}{% endif %}
       </article>
-{% if page.url contains 'postpartum-1' %}</div><footer class="reading-footer"><span>王婷乙醫師 · 陪妳把日常，照顧得更好</span><a href="{{ site.baseurl }}/index.html#articles">探索更多衛教文章 →</a></footer>{% endif %}
+{% if page.url == '/articles/postpartum-1.html' or page.url == '/articles/postpartum.html' %}</div><footer class="reading-footer"><span>王婷乙醫師 · 陪妳把日常，照顧得更好</span><a href="{{ site.baseurl }}/index.html#articles">探索更多衛教文章 →</a></footer>{% endif %}
     </main>
   </body>
 </html>
