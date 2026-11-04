@@ -25,7 +25,8 @@ published: true
 .editorial-article .metabolism-story li{background:none;border-radius:0;padding:0 0 10px 4px;font-size:17px;}
 .editorial-article .metabolism-story li::marker{color:#91a47d;}
 .editorial-article .metabolism-story li p{margin:0;}
-.editorial-article .metabolism-story strong{display:inline;font-weight:700;color:#355443;}
+.editorial-article .article-content .metabolism-story strong{display:inline;margin:0;font-weight:700;color:#355443;}
+.editorial-article .article-content .metabolism-story .inline-label{white-space:nowrap;}
 .metabolism-story .comparison-figure{margin:20px 0 30px;}
 .metabolism-story .comparison-figure a{display:block;}
 .metabolism-story .comparison-figure img{width:100%;height:auto;border:1px solid #e1e4da;border-radius:8px;}
@@ -80,15 +81,15 @@ published: true
 <ul>
 <li>
 <p>
-<strong>常見節奏</strong>：執行「2 週熱量赤字（少吃）」，接著安排「2 週維持飲食（熱量平衡）」，規律交替。</p>
+<strong class="inline-label">常見節奏：</strong>執行「2 週熱量赤字（少吃）」，接著安排「2 週維持飲食（熱量平衡）」，規律交替。</p>
 </li>
 <li>
 <p>
-<strong>核心精神</strong>：休整期絕非隨意暴食的欺騙餐（Cheat Meal），而是精準吃足維持體重所需的每日總消耗量（TDEE），特別是補充優質碳水化合物。</p>
+<strong class="inline-label">核心精神：</strong>休整期絕非隨意暴食的欺騙餐（Cheat Meal），而是精準吃足維持體重所需的每日總消耗量（TDEE），特別是補充優質碳水化合物。</p>
 </li>
 <li>
 <p>
-<strong>生理信號</strong>：向大腦發出「食物充足、警報解除」的信號，重置瘦素與甲狀腺素水平，重新喚醒代謝引擎。</p>
+<strong class="inline-label">生理信號：</strong>向大腦發出「食物充足、警報解除」的信號，重置瘦素與甲狀腺素水平，重新喚醒代謝引擎。</p>
 </li>
 </ul>
 </section>
@@ -112,7 +113,7 @@ published: true
 </li>
 <li>
 <p>
-<strong>具體例子</strong>：假設一位 60 公斤的上班族，基礎代謝約 1300 大卡，久坐 TDEE 約為 <br>1300×1.2=1560 大卡（約 1550 到 1600 大卡）。在平時減重時每天可能只吃 1200 大卡（少吃約 350 大卡）；到了放假週，目標就是<strong>每天吃滿 1550 到 1600 大卡</strong>。這代表吃進去的剛好等於身體消耗的，熱量收支完全平衡，身體有足夠的安全感重啟代謝，體脂也絕對不會增加。</p>
+<strong class="inline-label">具體例子：</strong>假設一位 60 公斤的上班族，基礎代謝約 1300 大卡，久坐 TDEE 約為 <br>1300×1.2=1560 大卡（約 1550 到 1600 大卡）。在平時減重時每天可能只吃 1200 大卡（少吃約 350 大卡）；到了放假週，目標就是<strong>每天吃滿 1550 到 1600 大卡</strong>。這代表吃進去的剛好等於身體消耗的，熱量收支完全平衡，身體有足夠的安全感重啟代謝，體脂也絕對不會增加。</p>
 </li>
 </ul>
 <h3>
