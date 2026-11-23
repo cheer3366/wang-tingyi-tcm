@@ -150,7 +150,7 @@ layout: null
         <div class="journal-grid">
           {% for article in latest_articles %}
           <a class="journal-card{% if forloop.first %} journal-card--lead{% endif %}" href="{{ site.baseurl }}{{ article.url }}">
-            <div class="journal-visual">
+            <div class="journal-visual{% if article.cover contains 'healthy-looking-drinks.png' %} journal-visual--square{% endif %}">
               {% if article.cover %}
               <img src="{% if article.cover contains '://' %}{{ article.cover }}{% elsif article.cover contains site.baseurl %}{{ article.cover }}{% else %}{{ site.baseurl }}{{ article.cover }}{% endif %}" alt="" loading="lazy" />
               {% else %}

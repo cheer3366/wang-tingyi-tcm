@@ -33,7 +33,7 @@ layout: null
         <a class="article-card" href="{{ site.baseurl }}{{ article.url }}">
           {% if article.cover %}
           <img
-            class="article-card-thumb"
+            class="article-card-thumb{% if article.cover contains 'healthy-looking-drinks.png' %} article-card-thumb--square{% endif %}"
             src="{% if article.cover contains '://' %}{{ article.cover }}{% elsif article.cover contains site.baseurl %}{{ article.cover }}{% else %}{{ site.baseurl }}{{ article.cover }}{% endif %}"
             alt="{{ article.title | escape }}縮圖"
           />

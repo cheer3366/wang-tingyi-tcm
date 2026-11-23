@@ -28,6 +28,8 @@ body.editorial-article {background:#f6f3ed;color:#34453e;font-family:"Noto Sans 
 .editorial-article .article-date{display:inline-block;font-size:13px;font-weight:400;color:#667066;margin:0;}
 .editorial-article .article-cover{background:#eee5d7;border-radius:18px;margin-bottom:36px;border:1px solid #e6dfd3;}
 .editorial-article .article-cover img{width:100%;max-height:540px;object-fit:contain;}
+.editorial-article .article-cover.article-cover--square{width:min(100%,540px);margin-left:auto;margin-right:auto;background:#fff9f2;}
+.editorial-article .article-cover.article-cover--square img{width:100%;height:auto;max-height:none;object-fit:contain;}
 .editorial-article .reading-layout{display:grid;grid-template-columns:190px minmax(0,1fr);gap:40px;align-items:start;}
 .editorial-article .reading-nav{position:sticky;top:28px;padding-top:20px;border-top:2px solid #456652;font-size:14px;}
 .editorial-article .reading-nav p{font-size:12px;letter-spacing:.12em;color:#80574b;margin-bottom:14px;}
@@ -48,7 +50,7 @@ body.editorial-article {background:#f6f3ed;color:#34453e;font-family:"Noto Sans 
 .editorial-article .reading-footer a{padding:12px 20px;border:1px solid #bccaba;border-radius:99px;}
 @media(max-width:720px){.editorial-article .article-shell{padding:20px 20px 44px;}.editorial-article .article-back{margin-bottom:20px;}.editorial-article .article-hero{padding-top:22px;}.editorial-article .article-hero h1{font-size:30px;line-height:1.55;}.editorial-article .reading-layout{grid-template-columns:1fr;gap:24px;}.editorial-article .reading-nav{position:static;display:grid;grid-template-columns:1fr 1fr;gap:0 16px;padding-top:14px;}.editorial-article .reading-nav p{grid-column:1/-1;margin-bottom:2px;}.editorial-article .reading-nav a{font-size:13px;min-height:48px;}.editorial-article .article-cover{margin-bottom:25px;}.editorial-article .article-content{padding:24px 20px;}.editorial-article .article-content h2{font-size:21px;}.editorial-article .article-content p,.editorial-article .article-content li{font-size:16px;}.editorial-article .article-content li{padding:16px;}.editorial-article .reading-footer{align-items:flex-start;flex-direction:column;}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto;}}
-@media print{.editorial-article .reading-nav,.editorial-article .article-back,.editorial-article .reading-footer{display:none;}.editorial-article .reading-layout{display:block;}.editorial-article .article-content{border:0;padding:0;}.editorial-article .article-cover img{max-height:300px;}}
+@media print{.editorial-article .reading-nav,.editorial-article .article-back,.editorial-article .reading-footer{display:none;}.editorial-article .reading-layout{display:block;}.editorial-article .article-content{border:0;padding:0;}.editorial-article .article-cover img{max-height:300px;}.editorial-article .article-cover.article-cover--square{width:min(100%,300px);}.editorial-article .article-cover.article-cover--square img{max-height:300px;}}
 
 
 .editorial-article .reading-layout{display:block;}
@@ -77,7 +79,7 @@ body.editorial-article {background:#f6f3ed;color:#34453e;font-family:"Noto Sans 
 {% if updated %}<p class="article-date">更新日期：<time datetime="{{ updated | date: '%Y-%m-%d' }}">{{ updated | date: '%Y.%m.%d' }}</time></p>{% endif %}
 </header>
 {% if page.cover %}
-<figure class="article-cover"><img src="{% if page.cover contains '://' %}{{ page.cover }}{% elsif page.cover contains site.baseurl %}{{ page.cover }}{% else %}{{ site.baseurl }}{{ page.cover }}{% endif %}" alt="{{ page.title | escape }}文章封面" decoding="async"></figure>
+<figure class="article-cover{% if page.cover contains 'healthy-looking-drinks.png' %} article-cover--square{% endif %}"><img src="{% if page.cover contains '://' %}{{ page.cover }}{% elsif page.cover contains site.baseurl %}{{ page.cover }}{% else %}{{ site.baseurl }}{{ page.cover }}{% endif %}" alt="{{ page.title | escape }}文章封面" decoding="async"></figure>
 {% endif %}
 <div class="reading-layout">
 <nav class="reading-nav" aria-label="文章目錄" hidden></nav>
