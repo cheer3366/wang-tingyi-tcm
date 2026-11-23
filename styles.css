@@ -1588,11 +1588,10 @@ section[id] { scroll-margin-top: 132px; }
   .hero .hero-actions { margin-top: 24px; }
 }
 
-/* Square cover for healthy-looking-drinks only. Other covers stay cropped to the card frame. */
-.journal-visual.journal-visual--square { background: #fff9f2; }
-.journal-visual.journal-visual--square img { object-fit: contain; }
-.article-index-grid .article-card-thumb.article-card-thumb--square {
+/* Wide 1600×640 banner: keep the whole illustration inside this card only. */
+.article-index-grid .article-card-thumb.article-card-thumb--banner {
+  height: auto;
+  aspect-ratio: 5 / 2;
   object-fit: contain;
-  object-position: center;
   background: #fff9f2;
 }
