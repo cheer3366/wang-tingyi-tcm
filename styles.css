@@ -1587,3 +1587,11 @@ section[id] { scroll-margin-top: 132px; }
   .hero .intro { display: block; font-size: .875rem; line-height: 1.95; }
   .hero .hero-actions { margin-top: 24px; }
 }
+
+/* Wide 1600×640 banner: keep the whole illustration inside this card only. */
+.article-index-grid .article-card-thumb.article-card-thumb--banner {
+  height: auto;
+  aspect-ratio: 5 / 2;
+  object-fit: contain;
+  background: #fff9f2;
+}
